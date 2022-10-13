@@ -204,4 +204,3 @@ let gen8 = document.getElementById("btnradio8").addEventListener("click", e => {
 });
 
 let defaultGeneration = fetchPokemons(0, 151);
-let defaultType = fetchTypes();

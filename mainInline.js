@@ -108,19 +108,19 @@ function createPokemon(pokemon) {
     card.style.boxShadow = "0 3px 15px rgba(100, 100, 100, 0.5)";
     card.style.width = "100%";
     card.style.height = "100%";
-    card.style.backfaceVisibility = "hidden";
+    card.style.transform = "rotateY(180deg)";
     cardBack.style.borderRadius = "10px";
     cardBack.style.boxShadow = "0 3px 15px rgba(100, 100, 100, 0.5)";
     cardBack.style.width = "100%";
     cardBack.style.height = "100%";
-    cardBack.style.backfaceVisibility = "hidden";
     cardBack.style.transform = "rotateY(180deg)";
+    cardBack.style.backfaceVisibility = "hidden";
     cardBack.style.position = "absolute";
     cardBack.style.top = "0";
 
-    spriteContainer.backgroundImage = "./blob.svg";
-    spriteContainer.backgroundRepeat = "no-repeat";
-    spriteContainer.backgroundPosition = "center";
+    spriteContainer.style.backgroundImage = "url('blob.svg')";
+    spriteContainer.style.backgroundRepeat = "no-repeat";
+    spriteContainer.style.backgroundPosition = "center";
     
     name.style.textTransform = "capitalize";
     name.style.fontWeight = "bold";
@@ -130,16 +130,17 @@ function createPokemon(pokemon) {
     cardContainer.style.width = "100%";
     cardContainer.style.height = "100%";
     cardContainer.style.textAlign = "center";
+    cardContainer.style.transform = "rotateY(180deg)";
 
-    cardContainer.onmouseover = function() {
-        cardContainer.style.transform = "rotateY(180deg)";
-        cardContainer.style.transition = "transform 0.8s";
+    flipCard.onmouseover = function() {
+        flipCard.style.transform = "rotateY(180deg)";
+        flipCard.style.transition = "transform 0.8s";
         cardBack.style.transform = "rotateY(0deg)";
         cardBack.style.transition = "transform 0.8s";
     }
-    cardContainer.onmouseout = function() {
-        cardContainer.style.transform = "rotateY(0deg)";
-        cardContainer.style.transition = "transform 0.8s";
+    flipCard.onmouseout = function() {
+        flipCard.style.transform = "rotateY(0deg)";
+        flipCard.style.transition = "transform 0.8s";
         cardBack.style.transform = "rotateY(180deg)";
         cardBack.style.transition = "transform 0.8s";
     }
@@ -176,10 +177,12 @@ function progressBars(stats) {
         statContainer.appendChild(progress);
 
         statsContainer.appendChild(statContainer);
+
         statContainer.style.marginTop = "30px";
         statContainer.style.display = "grid";
         statContainer.style.gridTemplateColumns = "1fr 2fr";
         statContainer.style.textAlign = "center";
+        statContainer.style.alignItems = "center";
     }
 
     return statsContainer;
@@ -248,4 +251,3 @@ let gen8 = document.getElementById("btnradio8").addEventListener("click", e => {
 });
 
 let defaultGeneration = fetchPokemons(0, 151);
-let defaultType = fetchTypes();
